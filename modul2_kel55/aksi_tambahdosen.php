@@ -8,7 +8,7 @@ $alamat = $_POST['alamat'];
 $jk = $_POST['jk'];
 $doswal = $_POST['doswal'];
 
-$query = mysqli_query($connect, "INSERT INTO mahasiswa SET nim='$nim', nama='$nama', alamat='$alamat', jeniskelamin='$jk', id_dosen='$doswal'")
+$query = mysqli_query($connect, "INSERT INTO dosen SET nim='$nim', nama='$nama', alamat='$alamat', jeniskelamin='$jk', id_dosen='$doswal'")
 or die(mysqli_error($connect));
 
 if ($query){

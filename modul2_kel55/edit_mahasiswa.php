@@ -1,6 +1,12 @@
 <?php
 //isikan dengan query select data
 include "koneksi.php";
+
+session_start();
+if($_SESSION['status']!="login"){
+	header("location: login.php");
+}
+
 $id = $_GET['id'];
 $query = mysqli_query($connect, "select * from mahasiswa where id='$id'") or die(mysqli_error($connect));
 
@@ -12,6 +18,7 @@ while ($res = mysqli_fetch_array($query)) {
     $id_dosen = $res['id_dosen'];
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,6 +43,9 @@ while ($res = mysqli_fetch_array($query)) {
         </center>
         <center>
             <h4 class="blog-title">Praktikum Sistem Basis Data 2019</h4>
+        </center>
+        <center>
+        		<p><a href='logout.php'><button type='button' class='btn	btn-primary'><span class='glyphiconglyphicon-plus-sign'></span> Logout</button></a></p>
         </center>
     </header><br><br>
     <div class="col-md-2" align="left">

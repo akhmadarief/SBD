@@ -1,3 +1,14 @@
+<?php
+
+include("koneksi.php");
+
+session_start();
+if($_SESSION['status']!="login"){
+	header("location: login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +34,9 @@
         <center>
             <h4 class="blog-title">Praktikum Sistem Basis Data 2019</h4>
         </center>
+        <center>
+        		<p><a href='logout.php'><button type='button' class='btn	btn-primary'><span class='glyphiconglyphicon-plus-sign'></span> Logout</button></a></p>
+        </center>
     </header><br><br>
     <!-- Membuat navbar di sebelah kirihalaman -->
     <div class="col-md-2" align="left">
@@ -42,9 +56,9 @@
                 <br>
                 <center>
                     <h2><a href="mahasiswa.php">Start</a></h2>
-					
+
         <p><a href='join.php'><button type='button' class='btn	btn-primary'><span class='glyphiconglyphicon-plus-sign'></span> Join</button></a></p>
-        
+
                 </center>
             </div>
         </div>
