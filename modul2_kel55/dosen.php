@@ -35,7 +35,7 @@ if($_SESSION['status']!="login"){
             <h4 class="blog-title">Praktikum Sistem Basis Data 2019</h4>
         </center>
         <center>
-        		<p><a href='logout.php'><button type='button' class='btn	btn-primary'><span class='glyphiconglyphicon-plus-sign'></span> Logout</button></a></p>
+        		<p><a href='logout.php'><button type='button' class='btn btn-danger'><span class='glyphiconglyphicon-plus-sign'></span> Logout</button></a></p>
         </center>
     </header><br><br>
     <!-- Membuat navbar di sebelah kirihalaman -->
@@ -52,7 +52,12 @@ if($_SESSION['status']!="login"){
     </div>
     <div class="container col-md-10">
         <p><a href='tambah_dosen.php'><button type='button' class='btn	btn-primary'><span class='glyphiconglyphicon-plus-sign'></span> Add Dosen</button></a></p>
-        <div class="row">
+				<form class="container col-md-2" style="padding:0;" action="mahasiswa.php" method="GET">
+        <input type="text" class="form-control" style="border-radius: 4px 0px 0px 4px;" name="cari" placeholder="Cari di sini ..." value="<?php if (isset($_GET['cari'])){echo $_GET['cari'];}?>">
+        <p><?php if (isset($_GET['cari'])){$cari=$_GET['cari']; if($cari==""){header('location: mahasiswa.php');}else{echo "Hasil pencarian dari: <b>$cari</b>";}}?></p>
+        </form>
+        <button type='submit' class='btn btn-primary' style="border-radius: 0px 4px 4px 0px; height: 34px;"></span>Cari</button>
+				<div class="row">
             <div class="col-md-12">
                 <table class="tabletable-striped table-bordered">
                     <thead>
@@ -69,21 +74,30 @@ if($_SESSION['status']!="login"){
                         <!--  fungsi  select  padaphp taruh disini-->
                         <?php
                         include "koneksi.php";
-                        $query = "select * from dosen";
+                        if (isset($_GET['cari'])){
+                          $cari = $_GET['cari'];
+                          $query = "SELECT * FROM dosen WHERE nama LIKE '%".$cari."%'";
+                        }else{
+                          $query = "SELECT * FROM dosen";
+                        }
                         $result = mysqli_query($connect, $query) or die(mysqli_error($connect));
-                        while ($row = mysqli_fetch_array($result)) {
-                            ?>
-                            <tr>
-                                <td><?php echo $row['nidn']; ?></td>
-                                <td><?php echo $row['nama']; ?></td>
-                                <td><?php echo $row['alamat']; ?></td>
-                                <td><?php echo $row['email']; ?></td>
-                                <td><a href='edit_dosen.php?id=<?php echo $row['id_dosen']; ?>' class='btn btn-success'>
-                                        <span class='glyphicon glyphicon-edit'></span>Edit</button></a>
-                                    <a href='hapus_dosen.php?id=<?php echo $row['id_dosen']; ?>' class='btn btn-danger'>
-                                        <span class='glyphicon glyphicon-remove-sign'>Delete</button></a></td>
-                            </tr>
-                        <?php
+                        if($result->num_rows == 0){
+                          echo "<p>Hasil pencarian tidak ditemukan</p>";
+                        }else{
+	                        while ($row = mysqli_fetch_array($result)) {
+	                            ?>
+	                            <tr>
+	                                <td><?php echo $row['nidn']; ?></td>
+	                                <td><?php echo $row['nama']; ?></td>
+	                                <td><?php echo $row['alamat']; ?></td>
+	                                <td><?php echo $row['email']; ?></td>
+	                                <td><a href='edit_dosen.php?id=<?php echo $row['id_dosen']; ?>' class='btn btn-success'>
+	                                        <span class='glyphicon glyphicon-edit'></span>Edit</button></a>
+	                                    <a href='hapus_dosen.php?id=<?php echo $row['id_dosen']; ?>' class='btn btn-danger'>
+	                                        <span class='glyphicon glyphicon-remove-sign'>Delete</button></a></td>
+	                            </tr>
+                        	<?php
+													}
                         }
                         ?>
                     </tbody>

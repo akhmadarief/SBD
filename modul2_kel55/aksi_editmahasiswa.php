@@ -13,7 +13,7 @@ $query = mysqli_query($connect, "UPDATE mahasiswa SET nim='$nim', nama='$nama', 
 or die(mysqli_error($connect));
 
 if ($query){
-	header('location: dosen.php');
+	header('location: mahasiswa.php');
 }
 else{
 	echo mysqli_error($connect);

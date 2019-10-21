@@ -2,13 +2,12 @@
 
 include("koneksi.php");
 
-$nim = $_POST['nim'];
+$nidn = $_POST['nidn'];
 $nama = $_POST['nama'];
 $alamat = $_POST['alamat'];
-$jk = $_POST['jk'];
-$doswal = $_POST['doswal'];
+$email = $_POST['email'];
 
-$query = mysqli_query($connect, "INSERT INTO dosen SET nim='$nim', nama='$nama', alamat='$alamat', jeniskelamin='$jk', id_dosen='$doswal'")
+$query = mysqli_query($connect, "INSERT INTO dosen SET nidn='$nidn', nama='$nama', alamat='$alamat', email='$email'")
 or die(mysqli_error($connect));
 
 if ($query){

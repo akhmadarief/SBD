@@ -35,7 +35,7 @@ if($_SESSION['status']!="login"){
             <h4 class="blog-title">Praktikum Sistem Basis Data 2019</h4>
         </center>
         <center>
-        		<p><a href='logout.php'><button type='button' class='btn	btn-primary'><span class='glyphiconglyphicon-plus-sign'></span> Logout</button></a></p>
+        		<p><a href='logout.php'><button type='button' class='btn btn-danger'><span class='glyphiconglyphicon-plus-sign'></span> Logout</button></a></p>
         </center>
     </header><br><br>
     <div class="col-md-2" align="left">
