@@ -66,7 +66,7 @@ $result = mysqli_query($connect, $query) or die(mysqli_error($connect));
         <p><a href='tambah_mahasiswa.php'><button type='button' class='btn btn-primary'><span class='glyphiconglyphicon-plus-sign'></span> Add Mahasiswa</button></a></p>
 				<form action="mahasiswa.php" method="GET">
 				<div class="container col-md-2" style="padding:0;">
-        <input type="text" class="form-control" style="border-radius: 4px 0px 0px 4px;" name="cari" placeholder="Cari di sini ..." value="<?php if (isset($_GET['cari'])){echo $_GET['cari'];}?>">
+        <input type="text" class="form-control" style="border-radius: 4px 0px 0px 4px;" name="cari" placeholder="Cari nama di sini ..." value="<?php if (isset($_GET['cari'])){echo $_GET['cari'];}?>">
 				<?php if(!isset($_GET['cari'])){echo "<p></p>";}?>
 				</div>
         <button type='submit' class='btn btn-primary' style="border-radius: 0px 4px 4px 0px; height: 34px;"></span>Cari</button>
