@@ -36,6 +36,9 @@
                                 if ($pesan == "belum_login"){
                                     echo "Silakan login terlebih dahulu";
                                 }
+                                if ($pesan == "logout"){
+                                    echo "Berhasil logout dari sistem";
+                                }
                             }
                             ?>
                         </div>
