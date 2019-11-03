@@ -13,7 +13,7 @@ if (isset($_GET['cari'])){
 	if($cari==""){
 		header('location: dosen.php');
 	}
-	$query = "SELECT * FROM dosen WHERE nama LIKE '%".$cari."%'";
+	$query = "SELECT * FROM dosen WHERE nama OR email LIKE '%".$cari."%'";
 }else{
 	$query = "SELECT * FROM dosen";
 }
